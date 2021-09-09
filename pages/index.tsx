@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ blogs }) => {
 
   return (
     <div className="w-full">
-      <div className="text-left my-5 ml-24">
+      <div className="text-left mb-2 md:my-5 md:ml-24">
         <h2 className="text-3xl text-yellow-500 font-semibold">Blog</h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
@@ -31,9 +31,9 @@ const Home: NextPage<Props> = ({ blogs }) => {
           <Link href={`/blog/${blog.id}`} key={blog.id}>
             <li
               key={blog.id}
-              className="w-full md:w-2/5 p-5 border-2 rounded-lg"
+              className="w-full md:w-2/5 p-5 border-2 rounded-lg flex flex-col justify-between"
             >
-              <div className="w-full h-16">
+              <div className="w-full">
                 <a className="text-xl">{blog.title}</a>
               </div>
               <div className="flex gap-1 flex-wrap py-2">
@@ -54,7 +54,7 @@ const Home: NextPage<Props> = ({ blogs }) => {
           </Link>
         ))}
         {/* レイアウト調整用 */}
-        <div className="w-full md:w-2/5 p-5"></div>
+        {blogs.length % 2 === 1 && <div className="w-full md:w-2/5 p-5"></div>}
       </ul>
     </div>
   );

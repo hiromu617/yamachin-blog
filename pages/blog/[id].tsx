@@ -8,7 +8,7 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
-    <main className="container px-10">
+    <main className="container md:px-10">
       <div className="text-center mb-16">
         <h1 className="text-2xl text-gray-800 my-5 font-semibold">
           {blog.title}
