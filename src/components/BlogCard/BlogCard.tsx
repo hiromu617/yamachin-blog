@@ -18,12 +18,11 @@ const BlogCard: VFC<Props> = ({ blog }) => {
           <a className="text-xl">{blog.title}</a>
         </div>
         <div className="flex gap-1 flex-wrap py-2">
-          <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
-            English
-          </span>
-          <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
-            Economy
-          </span>
+          {blog.tags.map((tag) => (
+            <span key={tag.id} className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+              {tag.name}
+            </span>
+          ))}
         </div>
         <p className="text-right text-sm text-gray-600">
           {formatDistance(new Date(blog.createdAt), new Date(), {
