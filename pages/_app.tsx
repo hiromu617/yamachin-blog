@@ -6,7 +6,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <NavBar />
-      <div className="container mx-auto lg:px-32 pt-5 min-h-screen">
+      <div className="container mx-auto px-2 xl:px-32 pt-5 min-h-screen">
         <Component {...pageProps} />
       </div>
     </>
