@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Link from "next/link";
 import { client } from "../libs/client";
 
@@ -14,9 +13,9 @@ const Home: NextPage<Props> = ({blog}) => {
     <div>
       <ul>
         {blog.map((blog: any) => (
-          <li key={blog.id}>
+          <li key={blog.id} className="bg-blue-500">
             <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
+              <a className="text-xl">{blog.title}</a>
             </Link>
           </li>
         ))}

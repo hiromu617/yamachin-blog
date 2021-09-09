@@ -7,13 +7,14 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
-    <main>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
-      <div
+    <main className="container p-5">
+      <h1 className="text-xl text-gray-700">{blog.title}</h1>
+      <p className="text-gray-700">{blog.publishedAt}</p>
+      <article
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
+        className="prose text-gray-700"
       />
     </main>
   );
