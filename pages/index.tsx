@@ -3,22 +3,23 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
-import { formatDistance } from "date-fns";
-import ja from "date-fns/locale/ja";
 import { Blog } from "../src/types/Blog";
+import Pagination from "../src/components/Pagination/Pagination";
+import BlogCard from "../src/components/BlogCard/BlogCard";
 
 type BlogRes = {
   readonly contents: Blog[];
-  readonly totalCounts: number;
+  readonly totalCount: number;
   readonly offset: number;
   readonly limit: number;
 };
 
 type Props = {
   blogs: Blog[];
+  totalCount: number;
 };
 
-const Home: NextPage<Props> = ({ blogs }) => {
+const Home: NextPage<Props> = ({ blogs, totalCount }) => {
   if (!blogs) return <h1>error</h1>;
 
   return (
@@ -27,35 +28,15 @@ const Home: NextPage<Props> = ({ blogs }) => {
         <h2 className="text-3xl text-yellow-500 font-semibold">Blog</h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
-        {blogs.map((blog: Blog) => (
-          <Link href={`/blog/${blog.id}`} key={blog.id}>
-            <li
-              key={blog.id}
-              className="w-full md:w-2/5 p-5 border-2 rounded-lg flex flex-col justify-between"
-            >
-              <div className="w-full">
-                <a className="text-xl">{blog.title}</a>
-              </div>
-              <div className="flex gap-1 flex-wrap py-2">
-                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
-                  English
-                </span>
-                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
-                  Economy
-                </span>
-              </div>
-              <p className="text-right text-sm text-gray-600">
-                {formatDistance(new Date(blog.createdAt), new Date(), {
-                  addSuffix: true,
-                  // locale: ja,
-                })}
-              </p>
-            </li>
-          </Link>
+        {blogs.map((blog) => (
+          <BlogCard blog={blog} key={blog.id} />
         ))}
         {/* レイアウト調整用 */}
         {blogs.length % 2 === 1 && <div className="w-full md:w-2/5 p-5"></div>}
       </ul>
+      <div className="w-full text-center my-10">
+        <Pagination totalCount={totalCount} />
+      </div>
     </div>
   );
 };
@@ -63,10 +44,12 @@ const Home: NextPage<Props> = ({ blogs }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const data: BlogRes = await client.get({ endpoint: "blog" });
+  const data: BlogRes = await client.get({ endpoint: "blog?offset=0&limit=5" });
+  console.log(data);
   return {
     props: {
       blogs: data.contents,
+      totalCount: data.totalCount,
     },
   };
 };
