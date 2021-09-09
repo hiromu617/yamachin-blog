@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { client } from "../../libs/client";
+import { format } from "date-fns";
 
 type Props = {
   blog: any;
@@ -7,14 +8,28 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
-    <main className="container p-5">
-      <h1 className="text-xl text-gray-700">{blog.title}</h1>
-      <p className="text-gray-700">{blog.publishedAt}</p>
+    <main className="container px-10">
+      <div className="text-center mb-16">
+        <h1 className="text-2xl text-gray-800 my-5 font-semibold">
+          {blog.title}
+        </h1>
+        <div className="flex justify-center  gap-1 flex-wrap py-2">
+          <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+            English
+          </span>
+          <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+            Economy
+          </span>
+        </div>
+        <p className="text-gray-700">
+          {format(new Date(blog.publishedAt), "yyyy-MM-dd")}
+        </p>
+      </div>
       <article
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
-        className="prose text-gray-700"
+        className="prose text-gray-700 mx-auto"
       />
     </main>
   );
