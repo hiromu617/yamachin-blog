@@ -3,25 +3,39 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
+import { formatDistance } from "date-fns";
+import ja from "date-fns/locale/ja";
 
 type Props = {
   blog: any;
 };
 
 const Home: NextPage<Props> = ({ blog }) => {
-  console.log(blog)
+  console.log(blog);
   return (
     <div className="w-full">
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
         {blog.map((blog: any) => (
           <Link href={`/blog/${blog.id}`} key={blog.id}>
-            <li key={blog.id} className="w-full md:w-2/5 p-5 border-2 rounded-lg">
+            <li
+              key={blog.id}
+              className="w-full md:w-2/5 p-5 border-2 rounded-lg"
+            >
               <a className="text-xl">{blog.title}</a>
               <div className="flex gap-1 flex-wrap py-2">
-                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">English</span>
-                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">Economy</span>
+                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+                  English
+                </span>
+                <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+                  Economy
+                </span>
               </div>
-              <p className="text-right text-md text-gray-600">{blog.createdAt}</p>
+              <p className="text-right text-sm text-gray-600">
+                {formatDistance(new Date(blog.createdAt), new Date(), {
+                  addSuffix: true,
+                  // locale: ja,
+                })}
+              </p>
             </li>
           </Link>
         ))}
