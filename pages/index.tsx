@@ -23,6 +23,9 @@ const Home: NextPage<Props> = ({ blogs }) => {
 
   return (
     <div className="w-full">
+      <div className="text-left my-5 ml-24">
+        <h2 className="text-3xl text-yellow-500 font-semibold">Blog</h2>
+      </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
         {blogs.map((blog: Blog) => (
           <Link href={`/blog/${blog.id}`} key={blog.id}>
@@ -30,9 +33,9 @@ const Home: NextPage<Props> = ({ blogs }) => {
               key={blog.id}
               className="w-full md:w-2/5 p-5 border-2 rounded-lg"
             >
-            <div className="w-full h-16">
-              <a className="text-xl">{blog.title}</a>
-            </div>
+              <div className="w-full h-16">
+                <a className="text-xl">{blog.title}</a>
+              </div>
               <div className="flex gap-1 flex-wrap py-2">
                 <span className="bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
                   English
