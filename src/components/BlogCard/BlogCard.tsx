@@ -12,10 +12,10 @@ const BlogCard: VFC<Props> = ({ blog }) => {
     <Link href={`/blog/${blog.id}`} key={blog.id}>
       <li
         key={blog.id}
-        className="w-full md:w-2/5 p-5 border-2 rounded-lg flex flex-col justify-between"
+        className="w-full md:w-2/5 p-3 md:p-5 border-2 rounded-lg flex flex-col justify-between"
       >
         <div className="w-full">
-          <a className="text-xl">{blog.title}</a>
+          <a className="text-md md:text-xl">{blog.title}</a>
         </div>
         <div className="flex gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (

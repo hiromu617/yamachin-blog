@@ -19,14 +19,14 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
   return (
     <div className="w-full">
       <div className="text-left mb-2 md:my-5 md:ml-24">
-        <h2 className="text-3xl text-yellow-500 font-semibold">{totalCount} Articles</h2>
+        <h2 className="text-xl md:text-3xl text-yellow-500 font-semibold">{totalCount} Articles</h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
         {blogs.map((blog) => (
           <BlogCard blog={blog} key={blog.id} />
         ))}
         {/* レイアウト調整用 */}
-        {blogs.length % 2 === 1 && <div className="w-full md:w-2/5 p-5"></div>}
+        {blogs.length % 2 === 1 && <div className="hidden md:block  w-full md:w-2/5 p-5"></div>}
       </ul>
       <div className="w-full text-center my-10">
         <Pagination totalCount={totalCount} />

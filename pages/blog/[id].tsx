@@ -11,8 +11,8 @@ type Props = {
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
     <main className="container md:px-10 mb-16">
-      <div className="text-center mb-16">
-        <h1 className="text-2xl text-gray-800 my-5 font-semibold">
+      <div className="text-center mb-5 md:mb-16">
+        <h1 className="text-lg md:text-2xl text-gray-800 my-2 md:my-5 font-semibold">
           {blog.title}
         </h1>
         <div className="flex justify-center  gap-1 flex-wrap py-2">
