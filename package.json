@@ -11,8 +11,10 @@
   "dependencies": {
     "@heroicons/react": "^1.0.4",
     "@tailwindcss/typography": "^0.4.1",
+    "@types/lodash": "^4.14.172",
     "autoprefixer": "^10.3.4",
     "date-fns": "^2.23.0",
+    "lodash": "^4.17.21",
     "microcms-js-sdk": "^1.2.0",
     "next": "11.1.2",
     "next-themes": "^0.0.15",
