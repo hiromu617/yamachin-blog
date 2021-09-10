@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Pagination: VFC<Props> = ({ totalCount }) => {
-  const PER_PAGE = 5;
+  const PER_PAGE = 12;
   const router = useRouter();
   const { id } = router.query;
   const currentPage: number = id ? +id : 1;

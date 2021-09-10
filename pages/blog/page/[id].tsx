@@ -6,7 +6,7 @@ import { Blog } from "../../../src/types/Blog";
 import { BlogRes } from "../../../src/types/BlogRes";
 import { client } from "../../../libs/client";
 
-const PER_PAGE = 5;
+const PER_PAGE = 12;
 
 type Props = {
   blogs: Blog[];
@@ -62,7 +62,7 @@ export const getStaticProps = async (context: any) => {
   const id = context.params.id;
 
   const data: BlogRes = await client.get({
-    endpoint: `blog?offset=${(id - 1) * 5}&limit=5`,
+    endpoint: `blog?offset=${(id - 1) * 5}&limit=12`,
   });
 
   return {

@@ -38,8 +38,7 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const data: BlogRes = await client.get({ endpoint: "blog?offset=0&limit=5" });
-  console.log(data);
+  const data: BlogRes = await client.get({ endpoint: "blog?offset=0&limit=12" });
   return {
     props: {
       blogs: data.contents,

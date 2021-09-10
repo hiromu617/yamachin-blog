@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const NavBar: VFC = () => {
   return (
-    <div className="sticky top-0 bg-white">
+    <div className="sticky top-0 bg-white z-50">
       <div className="flex justify-between py-3 px-3 md:py-5 md:px-10 items-center border-b-2 border-gray-100">
         <Link href="/">
           <h1 className="tracking-tighter text-xl font-medium text-gray-700 ">YAMACHIN BROG</h1>
