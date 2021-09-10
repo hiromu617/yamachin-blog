@@ -21,7 +21,7 @@ const Pagination: VFC<Props> = ({ totalCount }) => {
         <li key={index}>
           <Link href={`/blog/page/${number}`}>
             {currentPage === +number ? (
-              <a className="text-white bg-yellow-500 p-2 h-8 w-8 rounded-full inline-flex justify-center items-center">
+              <a className="text-white bg-yellow-500 dark:bg-yellow-600 p-2 h-8 w-8 rounded-full inline-flex justify-center items-center">
                 {number}
               </a>
             ) : (

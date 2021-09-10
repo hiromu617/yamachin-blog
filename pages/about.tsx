@@ -42,7 +42,7 @@ const About: NextPage<Props> = ({ profile }) => {
         dangerouslySetInnerHTML={{
           __html: `${profile.body}`,
         }}
-        className="prose-yellow prose-sm md:prose text-gray-700 mx-auto"
+        className="prose-yellow prose-sm md:prose text-gray-700 dark:text-gray-300 mx-auto"
       />
     </main>
   );
