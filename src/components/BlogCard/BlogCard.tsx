@@ -12,7 +12,7 @@ const BlogCard: VFC<Props> = ({ blog }) => {
     <Link href={`/blog/${blog.id}`} key={blog.id}>
       <li
         key={blog.id}
-        className="w-full md:w-2/5 p-3 md:p-5 border-2 dark:border-gray-800 rounded-lg flex flex-col justify-between"
+        className="w-full md:w-2/5 p-3 md:p-5 border-2 dark:border-gray-700 rounded-lg flex flex-col justify-between"
       >
         <div className="w-full">
           <a className="text-md md:text-xl dark:text-gray-300">{blog.title}</a>

@@ -11,7 +11,7 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
-    <main className="container md:px-10 pb-16 dark:bg-gray-900">
+    <main className="container md:px-10 pb-16 dark:bg-gray-800">
       <div className="text-center mb-5 md:mb-16">
         {blog.thumbnail && <Image width={+blog.thumbnail.width} height={+blog.thumbnail.height} src={blog.thumbnail.url} alt={"thumbnail"} />}
         <h1 className="text-lg md:text-2xl text-gray-800 dark:text-gray-200 my-2 md:my-5 font-semibold">
@@ -35,7 +35,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
-        className="prose-yellow prose-sm md:prose text-gray-700 dark:text-gray-300 mx-auto"
+        className="prose-yellow prose-sm md:prose text-gray-700 dark:prose-dark  mx-auto"
       />
     </main>
   );
