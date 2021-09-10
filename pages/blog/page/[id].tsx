@@ -5,6 +5,7 @@ import Pagination from "../../../src/components/Pagination/Pagination";
 import { Blog } from "../../../src/types/Blog";
 import { BlogRes } from "../../../src/types/BlogRes";
 import { client } from "../../../libs/client";
+import { useLocales } from "../../../src/hooks/useLocales";
 
 const PER_PAGE = 12;
 
@@ -14,16 +15,19 @@ type Props = {
 };
 
 const BlogPageId: VFC<Props> = ({ blogs, totalCount }) => {
+  const { t, locale } = useLocales();
+  if (!blogs) return <h1>error</h1>;
+
   return (
     <div className="w-full">
       <div className="text-left mb-2 md:my-5 md:ml-24">
-        <h2 className="text-xl md:text-3xl text-yellow-500 font-semibold">
-          {totalCount} Articles
+        <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
+          {totalCount} {t("indexHeading")}
         </h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
         {blogs.map((blog) => (
-          <BlogCard blog={blog} key={blog.id} />
+          <BlogCard blog={blog} locale={locale} key={blog.id} />
         ))}
         {/* レイアウト調整用 */}
         {blogs.length % 2 === 1 && (
