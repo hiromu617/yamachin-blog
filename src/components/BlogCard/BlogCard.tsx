@@ -15,7 +15,7 @@ const BlogCard: VFC<Props> = ({ blog }) => {
         className="w-full md:w-2/5 p-3 md:p-5 border-2 dark:border-gray-700 rounded-lg flex flex-col justify-between"
       >
         <div className="w-full">
-          <a className="text-md md:text-xl dark:text-gray-300">{blog.title}</a>
+          <a className="text-md  font-semibold md:text-xl text-gray-600 dark:text-gray-300">{blog.title}</a>
         </div>
         <div className="flex gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (

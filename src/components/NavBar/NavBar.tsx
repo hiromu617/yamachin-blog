@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 const NavBar: VFC = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <div className="sticky top-0 h-14 md:h-16 bg-white dark:bg-gray-800 z-50">
+    <div className="sticky top-0 h-14 md:h-16 bg-white dark:bg-gray-900 z-50">
       <div className="flex justify-between px-3 h-full md:px-10 items-center border-b-2 border-gray-100 dark:border-gray-700">
         <Link href="/">
           <h1 className="tracking-tighter text-xl font-medium text-gray-700 dark:text-gray-300">
