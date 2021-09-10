@@ -4,5 +4,7 @@
   },
   "title": "ようこそ",
   "description": "編集してみましょう",
-  "indexHeading": "件の記事"
+  "indexHeading": "件の記事",
+  "ja": "日本語",
+  "en": "英語"
 }
