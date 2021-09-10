@@ -15,7 +15,7 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ blogs, totalCount }) => {
-  const { t } = useLocales();
+  const { t, locale } = useLocales();
   if (!blogs) return <h1>error</h1>;
 
   return (
@@ -27,7 +27,7 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
         {blogs.map((blog) => (
-          <BlogCard blog={blog} key={blog.id} />
+          <BlogCard blog={blog} locale={locale} key={blog.id} />
         ))}
         {/* レイアウト調整用 */}
         {blogs.length % 2 === 1 && (

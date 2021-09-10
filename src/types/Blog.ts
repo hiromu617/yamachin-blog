@@ -3,6 +3,7 @@ import { Tag } from "./Tag";
 export type Blog = {
   readonly id: string;
   readonly title: string;
+  readonly enTitle: string;
   readonly body: string;
   readonly tags: Tag[];
   readonly createdAt: string;

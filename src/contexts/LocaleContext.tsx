@@ -1,7 +1,6 @@
 import { FC, useState, useEffect, createContext, Context } from "react";
 import { merge, clone } from "lodash";
-
-export type Locales = "ja" | "en";
+import { Locales } from "../types/Locales";
 
 type LocaleProviderProps = {
   lang: Locales;
