@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect, VFC } from "react";
+import Head from "next/head"
 
 export const GA_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "";
-
 // IDが取得できない場合を想定する
 export const existsGaId = GA_ID !== "";
 
@@ -48,34 +48,29 @@ export const usePageView = () => {
 };
 
 // _app.tsx で読み込む
-export const GoogleAnalytics: VFC = () => {
-  return (
-    <>
-      {existsGaId && (
-        <>
-          <Script
-            defer
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-            strategy="afterInteractive"
-          />
-          <Script
-            id="ga-script"
-            defer
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_ID}');
-            `,
-            }}
-            strategy="afterInteractive"
-          />
-        </>
-      )}
-    </>
-  );
-};
+export const GoogleAnalytics = () => (
+  <>
+   <Head>
+        {/* Google Analytics */}
+        {existsGaId && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}', {
+                    page_path: window.location.pathname,
+                  });`,
+              }}
+            />
+          </>
+        )}
+      </Head>
+  </>
+);
 // イベントを型で管理
 type ContactEvent = {
   action: "submit_form";

@@ -10,20 +10,18 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   usePageView();
 
   return (
-    <>
-      <GoogleAnalytics />
-      <ThemeProvider attribute="class">
-        <LocaleProvider lang="ja">
-          <NavBar />
-          <div className="w-full min-h-screen dark:bg-gray-900">
-            <div className="container mx-auto px-2 xl:px-32 pt-5 h-full">
-              <Component {...pageProps} />
-            </div>
+    <ThemeProvider attribute="class">
+      <LocaleProvider lang="ja">
+        <NavBar />
+        <div className="w-full min-h-screen dark:bg-gray-900">
+          <div className="container mx-auto px-2 xl:px-32 pt-5 h-full">
+            <GoogleAnalytics />
+            <Component {...pageProps} />
           </div>
-          <Footer />
-        </LocaleProvider>
-      </ThemeProvider>
-    </>
+        </div>
+        <Footer />
+      </LocaleProvider>
+    </ThemeProvider>
   );
 };
 
