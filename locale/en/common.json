@@ -4,7 +4,8 @@
   },
   "title": "Welcome to",
   "description": "Get started by editing",
-  "indexHeading": "Articles",
+  "blogHeading": "Articles",
+  "tagHeading": "Tags",
   "ja": "Japanese",
   "en": "English"
 }

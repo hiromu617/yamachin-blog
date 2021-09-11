@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
 import { Blog } from "../src/types/Blog";
+import { Tag } from "../src/types/Tag";
 import { BlogRes } from "../src/types/BlogRes";
+import { TagRes } from "../src/types/TagRes";
 import { Pagination } from "../src/components/Pagination/Pagination";
 import { BlogCard } from "../src/components/BlogCard/BlogCard";
 import { HeroSection } from "../src/components/HeroSection/HeroSection";
@@ -12,10 +14,12 @@ import { useLocales } from "../src/hooks/useLocales";
 
 type Props = {
   blogs: Blog[];
-  totalCount: number;
+  blogTotalCount: number;
+  tags: Tag[];
+  tagTotalCount: number;
 };
 
-const Home: NextPage<Props> = ({ blogs, totalCount }) => {
+const Home: NextPage<Props> = ({ blogs, blogTotalCount, tags, tagTotalCount }) => {
   const { t, locale } = useLocales();
   if (!blogs) return <h1>error</h1>;
 
@@ -24,7 +28,7 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
       <HeroSection />
       <div className="text-left mb-2 md:my-5 md:ml-24">
         <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
-          {totalCount} {t("indexHeading")}
+          {blogTotalCount} {t("blogHeading")}
         </h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
@@ -37,7 +41,24 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
         )}
       </ul>
       <div className="w-full text-center my-10">
-        <Pagination totalCount={totalCount} />
+        <Pagination totalCount={blogTotalCount} />
+      </div>
+      <div className="mb-20">
+        <div className="text-left mb-2 md:my-5 md:ml-24">
+          <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
+            {tagTotalCount} {t("tagHeading")}
+          </h2>
+        </div>
+        <div className="mx-auto md:px-24 flex gap-3 flex-wrap py-2">
+          {tags.map((tag) => (
+            <span
+              key={tag.id}
+              className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-2 py-1 rounded-full"
+            >
+              {locale === "ja" ? tag.name : tag.enName}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -46,13 +67,20 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const data: BlogRes = await client.get({
+  const blogData: BlogRes = await client.get({
     endpoint: "blog?offset=0&limit=12",
   });
+
+  const tagData: TagRes = await client.get({
+    endpoint: "tag?offset=0&limit=100",
+  });
+
   return {
     props: {
-      blogs: data.contents,
-      totalCount: data.totalCount,
+      blogs: blogData.contents,
+      blogTotalCount: blogData.totalCount,
+      tags: tagData.contents,
+      tagTotalCount: tagData.totalCount,
     },
   };
 };

@@ -22,7 +22,7 @@ const BlogPageId: VFC<Props> = ({ blogs, totalCount }) => {
     <div className="w-full">
       <div className="text-left mb-2 md:my-5 md:ml-24">
         <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
-          {totalCount} {t("indexHeading")}
+          {totalCount} {t("blogHeading")}
         </h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
