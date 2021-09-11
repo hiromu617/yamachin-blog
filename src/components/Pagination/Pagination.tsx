@@ -6,7 +6,7 @@ type Props = {
   totalCount: number;
 };
 
-const Pagination: VFC<Props> = ({ totalCount }) => {
+export const Pagination: VFC<Props> = ({ totalCount }) => {
   const PER_PAGE = 12;
   const router = useRouter();
   const { id } = router.query;
@@ -35,5 +35,3 @@ const Pagination: VFC<Props> = ({ totalCount }) => {
     </ul>
   );
 };
-
-export default Pagination;

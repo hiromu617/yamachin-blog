@@ -8,7 +8,7 @@ import { useLocales } from "../../hooks/useLocales";
 
 const locales = ["ja", "en"];
 
-const NavBar: VFC = () => {
+export const NavBar: VFC = () => {
   const { theme, setTheme } = useTheme();
   const { t, locale, setLocale } = useLocales();
   return (
@@ -99,5 +99,3 @@ const NavBar: VFC = () => {
     </div>
   );
 };
-
-export default NavBar;

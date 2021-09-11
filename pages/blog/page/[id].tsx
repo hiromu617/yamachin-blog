@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { VFC } from "react";
-import BlogCard from "../../../src/components/BlogCard/BlogCard";
-import Pagination from "../../../src/components/Pagination/Pagination";
+import { BlogCard } from "../../../src/components/BlogCard/BlogCard";
+import { Pagination } from "../../../src/components/Pagination/Pagination";
 import { Blog } from "../../../src/types/Blog";
 import { BlogRes } from "../../../src/types/BlogRes";
 import { client } from "../../../libs/client";

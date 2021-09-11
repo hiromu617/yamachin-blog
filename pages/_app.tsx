@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
-import NavBar from "../src/components/NavBar/NavBar";
-import Footer from "../src/components/Footer/Footer";
+import { NavBar } from "../src/components/NavBar/NavBar";
+import { Footer } from "../src/components/Footer/Footer";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "next-themes";
 import { LocaleProvider } from "../src/contexts/LocaleContext";

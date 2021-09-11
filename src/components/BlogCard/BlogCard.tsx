@@ -10,7 +10,7 @@ type Props = {
   locale: Locales;
 };
 
-const BlogCard: VFC<Props> = ({ blog, locale }) => {
+export const BlogCard: VFC<Props> = ({ blog, locale }) => {
   return (
     <Link href={`/blog/${blog.id}`} key={blog.id}>
       <li
@@ -46,5 +46,3 @@ const BlogCard: VFC<Props> = ({ blog, locale }) => {
     </Link>
   );
 };
-
-export default BlogCard;

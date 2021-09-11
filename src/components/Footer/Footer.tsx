@@ -1,6 +1,6 @@
 import { VFC } from "react";
 
-const Footer: VFC = () => {
+export const Footer: VFC = () => {
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="flex justify-center py-5 px-10 items-center border-t-2 border-gray-100 dark:border-gray-700">
@@ -9,5 +9,3 @@ const Footer: VFC = () => {
     </div>
   );
 };
-
-export default Footer;
