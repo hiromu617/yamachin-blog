@@ -48,7 +48,7 @@ const Home: NextPage<Props> = ({
       <div className="w-full text-center my-10">
         <Pagination totalCount={blogTotalCount} />
       </div>
-      <div className="mb-20">
+      <div className="pb-20">
         <div className="text-left mb-2 md:my-5 md:ml-24">
           <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
             {tagTotalCount} {t("tagHeading")}
