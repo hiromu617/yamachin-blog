@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { client } from "../libs/client";
+import { useLocales } from "../src/hooks/useLocales";
 
 type Props = {
   profile: Profile;
@@ -17,9 +18,11 @@ type Profile = {
     width: number;
   };
   body: string;
+  enBody: string;
 };
 
 const About: NextPage<Props> = ({ profile }) => {
+  const { locale } = useLocales();
   return (
     <main className="container px-5 md:px-10 mb-16">
       <div className="text-left mb-2 md:my-5 m-auto max-w-2xl">
@@ -40,7 +43,7 @@ const About: NextPage<Props> = ({ profile }) => {
       </div>
       <article
         dangerouslySetInnerHTML={{
-          __html: `${profile.body}`,
+          __html: `${locale === "ja" ? profile.body: profile.enBody}`,
         }}
         className="prose-yellow prose-sm md:prose text-gray-700 dark:text-gray-300 dark:prose-dark  mx-auto"
       />
