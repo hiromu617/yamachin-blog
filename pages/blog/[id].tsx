@@ -6,6 +6,8 @@ import { format } from "date-fns";
 import { Blog } from "../../src/types/Blog";
 import { BlogRes } from "../../src/types/BlogRes";
 import { useLocales } from "../../src/hooks/useLocales";
+import { ChevronLeftIcon } from "@heroicons/react/solid";
+import { useRouter } from 'next/router'
 
 type Props = {
   blog: Blog;
@@ -13,6 +15,8 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   const { t, locale } = useLocales();
+  const router = useRouter()
+
   return (
     <main className="container md:px-10 pb-16 dark:bg-gray-900">
       <div className="text-center mb-5 md:mb-16">
@@ -30,9 +34,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         <div className="flex justify-center  gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (
             <Link href={`/tag/${tag.id}`} key={tag.id} passHref>
-              <span
-                className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-3 py-1 rounded-full"
-              >
+              <span className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-3 py-1 rounded-full">
                 {locale === "ja" ? tag.name : tag.enName}
               </span>
             </Link>
@@ -48,6 +50,12 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         }}
         className="prose-yellow prose-sm md:prose text-gray-700 dark:prose-dark  mx-auto"
       />
+      <div className="text-center py-14">
+        <button onClick={() => router.back()} className="text-gray-600 dark:text-gray-200 hover:text-yellow-500 w-auto mx-auto flex gap-1 justify-center items-center">
+          <ChevronLeftIcon className=" w-6 h-6" />
+          <p className="">{t("goBack")}</p>
+        </button>
+      </div>
     </main>
   );
 };
