@@ -1,15 +1,11 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { VFC, useEffect, useState } from "react";
 import { BlogCard } from "../../src/components/BlogCard/BlogCard";
-import { Pagination } from "../../src/components/Pagination/Pagination";
 import { Blog } from "../../src/types/Blog";
 import { Tag } from "../../src/types/Tag";
 import { BlogRes } from "../../src/types/BlogRes";
-import { client } from "../../libs/client";
 import { useLocales } from "../../src/hooks/useLocales";
-
-const PER_PAGE = 12;
+import { GoBackBtn } from "../../src/components/GoBackBtn/GobackBtn";
 
 type Props = {
   blogs: Blog[];
@@ -94,6 +90,7 @@ const TagId: VFC<Props> = () => {
           <div className="hidden md:block  w-full md:w-2/5 p-5"></div>
         )}
       </ul>
+      <GoBackBtn />
     </div>
   );
 };

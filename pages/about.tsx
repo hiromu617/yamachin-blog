@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { client } from "../libs/client";
+import { GoBackBtn } from "../src/components/GoBackBtn/GobackBtn";
 import { useLocales } from "../src/hooks/useLocales";
 
 type Props = {
@@ -47,6 +48,7 @@ const About: NextPage<Props> = ({ profile }) => {
         }}
         className="prose-yellow prose-sm md:prose text-gray-700 dark:text-gray-300 dark:prose-dark  mx-auto"
       />
+      <GoBackBtn />
     </main>
   );
 };
@@ -55,7 +57,6 @@ export default About;
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async () => {
   const data: Profile = await client.get({ endpoint: "profile" });
-  console.log(data);
   return {
     props: {
       profile: data,
