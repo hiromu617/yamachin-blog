@@ -19,7 +19,12 @@ type Props = {
   tagTotalCount: number;
 };
 
-const Home: NextPage<Props> = ({ blogs, blogTotalCount, tags, tagTotalCount }) => {
+const Home: NextPage<Props> = ({
+  blogs,
+  blogTotalCount,
+  tags,
+  tagTotalCount,
+}) => {
   const { t, locale } = useLocales();
   if (!blogs) return <h1>error</h1>;
 
@@ -51,12 +56,13 @@ const Home: NextPage<Props> = ({ blogs, blogTotalCount, tags, tagTotalCount }) =
         </div>
         <div className="mx-auto md:px-24 flex gap-3 flex-wrap py-2">
           {tags.map((tag) => (
-            <span
-              key={tag.id}
-              className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-2 py-1 rounded-full"
-            >
-              {locale === "ja" ? tag.name : tag.enName}
-            </span>
+            <Link href={`/tag/${tag.id}`} key={tag.id} passHref>
+              <span
+                className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-2 py-1 rounded-full"
+              >
+                {locale === "ja" ? tag.name : tag.enName}
+              </span>
+            </Link>
           ))}
         </div>
       </div>

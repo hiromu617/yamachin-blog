@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { client } from "../../libs/client";
 import { format } from "date-fns";
 import { Blog } from "../../src/types/Blog";
@@ -28,12 +29,13 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         </h1>
         <div className="flex justify-center  gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (
-            <span
-              key={tag.id}
-              className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-3 py-1 rounded-full"
-            >
-              {locale === "ja" ? tag.name : tag.enName}
-            </span>
+            <Link href={`/tag/${tag.id}`} key={tag.id} passHref>
+              <span
+                className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-3 py-1 rounded-full"
+              >
+                {locale === "ja" ? tag.name : tag.enName}
+              </span>
+            </Link>
           ))}
         </div>
         <p className="text-gray-700 dark:text-gray-400">

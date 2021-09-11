@@ -12,7 +12,7 @@ type Props = {
 
 export const BlogCard: VFC<Props> = ({ blog, locale }) => {
   return (
-    <Link href={`/blog/${blog.id}`} key={blog.id}>
+    <Link href={`/blog/${blog.id}`} key={blog.id} passHref>
       <li
         key={blog.id}
         className="w-full md:w-2/5 p-3 md:p-5 border-2 dark:border-gray-700 rounded-lg flex flex-col justify-between"
@@ -24,12 +24,11 @@ export const BlogCard: VFC<Props> = ({ blog, locale }) => {
         </div>
         <div className="flex gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (
-            <span
-              key={tag.id}
-              className="bg-yellow-500 dark:bg-yellow-600 text-white text-xs px-2 py-1 rounded-full"
-            >
-              {locale === "ja" ? tag.name : tag.enName}
-            </span>
+            <Link href={`/tag/${tag.id}`} key={tag.id} passHref>
+              <span className="bg-yellow-500 dark:bg-yellow-600 text-white text-xs px-2 py-1 rounded-full">
+                {locale === "ja" ? tag.name : tag.enName}
+              </span>
+            </Link>
           ))}
         </div>
         <p className="text-right text-sm text-gray-600 dark:text-gray-400">
