@@ -31,7 +31,7 @@ const Home: NextPage<Props> = ({
   return (
     <div className="w-full">
       <HeroSection />
-      <div className="text-left mb-2 md:my-5 md:ml-24">
+      <div id="blogSection" className="text-left mb-2 md:my-5 md:ml-24">
         <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
           {blogTotalCount} {t("blogHeading")}
         </h2>

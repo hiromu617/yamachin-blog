@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { client } from "../libs/client";
-import { GoBackBtn } from "../src/components/GoBackBtn/GobackBtn";
+import { GoBackBtn } from "../src/components/GoBackBtn/GoBackBtn";
 import { useLocales } from "../src/hooks/useLocales";
 
 type Props = {
@@ -31,8 +31,8 @@ const About: NextPage<Props> = ({ profile }) => {
           About
         </h2>
       </div>
-      <div className="text-center mb-5 md:mb-16">
-        <div className="relative m-auto w-60 h-60 ">
+      <div className="text-center mb-10 md:mb-16">
+        <div className="relative m-auto w-44 h-44 md:w-60 md:h-60">
           <Image
             layout="fill"
             src={profile.profile_image.url}

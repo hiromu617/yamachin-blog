@@ -5,7 +5,7 @@ import { Blog } from "../../src/types/Blog";
 import { Tag } from "../../src/types/Tag";
 import { BlogRes } from "../../src/types/BlogRes";
 import { useLocales } from "../../src/hooks/useLocales";
-import { GoBackBtn } from "../../src/components/GoBackBtn/GobackBtn";
+import { GoBackBtn } from "../../src/components/GoBackBtn/GoBackBtn";
 
 type Props = {
   blogs: Blog[];
