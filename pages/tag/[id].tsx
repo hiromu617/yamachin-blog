@@ -54,10 +54,8 @@ const TagId: VFC<Props> = () => {
         })
         .catch((e) => console.log(e));
     };
-    setTimeout(() => {
-      fetchDataFromTag();
-      fetchTag();
-    }, 3000);
+    fetchDataFromTag();
+    fetchTag();
   }, [id]);
 
   if (!blogs || !tag)
