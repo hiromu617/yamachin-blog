@@ -4,20 +4,26 @@ import { Footer } from "../src/components/Footer/Footer";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "next-themes";
 import { LocaleProvider } from "../src/contexts/LocaleContext";
+import { usePageView, GoogleAnalytics } from "../libs/gtag";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  usePageView();
+
   return (
-    <ThemeProvider attribute="class">
-      <LocaleProvider lang="ja">
-        <NavBar />
-        <div className="w-full min-h-screen dark:bg-gray-900">
-          <div className="container mx-auto px-2 xl:px-32 pt-5 h-full">
-            <Component {...pageProps} />
+    <>
+      <GoogleAnalytics />
+      <ThemeProvider attribute="class">
+        <LocaleProvider lang="ja">
+          <NavBar />
+          <div className="w-full min-h-screen dark:bg-gray-900">
+            <div className="container mx-auto px-2 xl:px-32 pt-5 h-full">
+              <Component {...pageProps} />
+            </div>
           </div>
-        </div>
-        <Footer />
-      </LocaleProvider>
-    </ThemeProvider>
+          <Footer />
+        </LocaleProvider>
+      </ThemeProvider>
+    </>
   );
 };
 
