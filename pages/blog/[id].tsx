@@ -7,6 +7,7 @@ import { Blog } from "../../src/types/Blog";
 import { BlogRes } from "../../src/types/BlogRes";
 import { useLocales } from "../../src/hooks/useLocales";
 import { GoBackBtn } from "../../src/components/GoBackBtn/GoBackBtn";
+import { NextSeo } from 'next-seo';
 
 type Props = {
   blog: Blog;
@@ -16,6 +17,22 @@ const BlogId: NextPage<Props> = ({ blog }) => {
   const { locale } = useLocales();
 
   return (
+    <>
+    <NextSeo
+      title={blog.title}
+      description="Yamachi's Blog"
+      openGraph={{
+        url: `https://yamachin-blog.vercel.app/${blog.id}`,
+        title: blog.title,
+        description: "Yamachi's Blog",
+        images: [
+          {
+            url: blog.thumbnail ?  blog.thumbnail.url : "../public/ogp.jpg",
+          },
+        ],
+        site_name: "Yamachi's Blog",
+      }}
+    />
     <main className="container md:px-10 pb-16 dark:bg-gray-900">
       <div className="text-center mb-5 md:mb-16">
         {blog.thumbnail && (
@@ -50,6 +67,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
       />
       <GoBackBtn />
     </main>
+    </>
   );
 };
 export default BlogId;

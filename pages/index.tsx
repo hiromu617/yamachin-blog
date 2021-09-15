@@ -1,6 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { client } from "../libs/client";
 import { Blog } from "../src/types/Blog";
@@ -11,6 +9,7 @@ import { Pagination } from "../src/components/Pagination/Pagination";
 import { BlogCard } from "../src/components/BlogCard/BlogCard";
 import { HeroSection } from "../src/components/HeroSection/HeroSection";
 import { useLocales } from "../src/hooks/useLocales";
+import { NextSeo } from 'next-seo';
 
 type Props = {
   blogs: Blog[];
@@ -29,6 +28,22 @@ const Home: NextPage<Props> = ({
   if (!blogs) return <h1>error</h1>;
 
   return (
+    <>
+    <NextSeo
+      title="About | Yamachi's Blog"
+      description="Yamachi's profile"
+      openGraph={{
+        url: 'https://yamachin-blog.vercel.app/',
+        title: "About | Yamachi's Blog",
+        description: "Yamachi's profile",
+        images: [
+          {
+            url: "../public/ogp.jpg",
+          },
+        ],
+        site_name: "Yamachi's Blog",
+      }}
+    />
     <div className="w-full">
       <HeroSection />
       <div id="blogSection" className="text-left mb-2 md:my-5 md:ml-24">
@@ -67,6 +82,7 @@ const Home: NextPage<Props> = ({
         </div>
       </div>
     </div>
+    </>
   );
 };
 
