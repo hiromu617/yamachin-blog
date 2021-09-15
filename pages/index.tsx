@@ -43,6 +43,11 @@ const Home: NextPage<Props> = ({
         ],
         site_name: "Yamachi's Blog",
       }}
+      twitter={{
+        handle: "@EatenTigers_fun",
+        site: "@EatenTigers_fun",
+        cardType: "summary_large_image",
+      }}
     />
     <div className="w-full">
       <HeroSection />

@@ -32,6 +32,11 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         ],
         site_name: "Yamachi's Blog",
       }}
+      twitter={{
+        handle: "@EatenTigers_fun",
+        site: "@EatenTigers_fun",
+        cardType: "summary_large_image",
+      }}
     />
     <main className="container md:px-10 pb-16 dark:bg-gray-900">
       <div className="text-center mb-5 md:mb-16">

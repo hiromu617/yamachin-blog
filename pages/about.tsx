@@ -41,6 +41,11 @@ const About: NextPage<Props> = ({ profile }) => {
         ],
         site_name: "Yamachi's Blog",
       }}
+      twitter={{
+        handle: "@EatenTigers_fun",
+        site: "@EatenTigers_fun",
+        cardType: "summary_large_image",
+      }}
     />
     <main className="container px-5 md:px-10 mb-16">
       <div className="text-left mb-2 md:my-5 m-auto max-w-2xl">
