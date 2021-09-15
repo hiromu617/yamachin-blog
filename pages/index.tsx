@@ -30,12 +30,12 @@ const Home: NextPage<Props> = ({
   return (
     <>
     <NextSeo
-      title="About | Yamachi's Blog"
-      description="Yamachi's profile"
+      title="Yamachi's Blog"
+      description="Yamachi's Blog"
       openGraph={{
         url: 'https://yamachin-blog.vercel.app/',
-        title: "About | Yamachi's Blog",
-        description: "Yamachi's profile",
+        title: "Yamachi's Blog",
+        description: "Yamachi' Blog",
         images: [
           {
             url: "../public/ogp.jpg",
