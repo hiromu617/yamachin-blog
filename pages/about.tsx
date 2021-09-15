@@ -3,6 +3,7 @@ import Image from "next/image";
 import { client } from "../libs/client";
 import { GoBackBtn } from "../src/components/GoBackBtn/GoBackBtn";
 import { useLocales } from "../src/hooks/useLocales";
+import { NextSeo } from 'next-seo';
 
 type Props = {
   profile: Profile;
@@ -25,6 +26,22 @@ type Profile = {
 const About: NextPage<Props> = ({ profile }) => {
   const { locale } = useLocales();
   return (
+    <>
+    <NextSeo
+      title="About | Yamachi's Blog"
+      description="Yamachi's profile"
+      openGraph={{
+        url: 'https://yamachin-blog.vercel.app/about',
+        title: "About | Yamachi's Blog",
+        description: "Yamachi's profile",
+        images: [
+          {
+            url: profile.profile_image.url,
+          },
+        ],
+        site_name: "Yamachi's Blog",
+      }}
+    />
     <main className="container px-5 md:px-10 mb-16">
       <div className="text-left mb-2 md:my-5 m-auto max-w-2xl">
         <h2 className="text-2xl md:text-3xl text-yellow-500 font-semibold">
@@ -50,6 +67,7 @@ const About: NextPage<Props> = ({ profile }) => {
       />
       <GoBackBtn />
     </main>
+    </>
   );
 };
 export default About;
