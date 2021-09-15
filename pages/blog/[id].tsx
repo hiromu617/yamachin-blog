@@ -22,12 +22,12 @@ const BlogId: NextPage<Props> = ({ blog }) => {
       title={blog.title}
       description="Yamachi's Blog"
       openGraph={{
-        url: `https://yamachin-blog.vercel.app/${blog.id}`,
+        url: `https://yamachin-blog.vercel.app/blog/${blog.id}`,
         title: blog.title,
         description: "Yamachi's Blog",
         images: [
           {
-            url: blog.thumbnail ?  blog.thumbnail.url : "../public/ogp.jpg",
+            url: blog.thumbnail ?  blog.thumbnail.url : "../../public/ogp.jpg",
           },
         ],
         site_name: "Yamachi's Blog",
