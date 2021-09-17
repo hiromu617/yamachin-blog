@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { VFC } from "react";
 import { BlogCard } from "../../../src/components/BlogCard/BlogCard";
 import { Pagination } from "../../../src/components/Pagination/Pagination";
