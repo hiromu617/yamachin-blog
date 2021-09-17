@@ -13,14 +13,14 @@ type Props = {
 export const BlogCard: VFC<Props> = ({ blog, locale }) => {
   return (
     <Link href={`/blog/${blog.id}`} key={blog.id} passHref>
-      <li
+      <a
         key={blog.id}
         className="w-full md:w-2/5 p-3 md:p-5 border-2 dark:border-gray-700 rounded-lg flex flex-col justify-between"
       >
         <div className="w-full">
-          <a className="text-md  font-semibold md:text-xl text-gray-600 dark:text-gray-300">
+          <h3 className="text-md  font-semibold md:text-xl text-gray-600 dark:text-gray-300">
             {locale === "ja" ? blog.title : blog.enTitle}
-          </a>
+          </h3>
         </div>
         <div className="flex gap-1 flex-wrap py-2">
           {blog.tags.map((tag) => (
@@ -41,7 +41,7 @@ export const BlogCard: VFC<Props> = ({ blog, locale }) => {
                 addSuffix: true,
               })}
         </p>
-      </li>
+      </a>
     </Link>
   );
 };
