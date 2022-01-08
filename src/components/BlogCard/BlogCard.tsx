@@ -33,11 +33,11 @@ export const BlogCard: VFC<Props> = ({ blog, locale }) => {
         </div>
         <p className="text-right text-sm text-gray-600 dark:text-gray-400">
           {locale === "ja"
-            ? formatDistance(new Date(blog.createdAt), new Date(), {
+            ? formatDistance(new Date(blog.publishedAt), new Date(), {
                 addSuffix: true,
                 locale: ja,
               })
-            : formatDistance(new Date(blog.createdAt), new Date(), {
+            : formatDistance(new Date(blog.publishedAt), new Date(), {
                 addSuffix: true,
               })}
         </p>
