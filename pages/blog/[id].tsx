@@ -68,7 +68,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
-        className="prose-yellow prose-sm md:prose text-gray-700 dark:prose-dark  mx-auto"
+        className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
       />
       <GoBackBtn />
     </main>
