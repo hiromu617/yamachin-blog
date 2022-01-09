@@ -7,6 +7,7 @@ import { Blog } from "../../src/types/Blog";
 import { BlogRes } from "../../src/types/BlogRes";
 import { useLocale } from "../../src/hooks/useLocale";
 import { GoBackBtn } from "../../src/components/GoBackBtn/GoBackBtn";
+import { axiosClient } from "../../libs/axios";
 import { NextSeo } from "next-seo";
 
 type Props = {
@@ -64,6 +65,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
             {format(new Date(blog.publishedAt), "yyyy-MM-dd")}
           </p>
         </div>
+
         <article
           dangerouslySetInnerHTML={{
             __html: `${blog.body}`,
@@ -93,7 +95,30 @@ export const getStaticPaths = async () => {
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context: any) => {
   const id = context.params.id;
-  const data: BlogRes = await client.get({ endpoint: "blog", contentId: id });
+  const data: Blog = await client.get({ endpoint: "blog", contentId: id });
+
+  // const params = {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/x-www-form-urlencoded",
+  //   },
+  //   body: JSON.stringify({
+  //     auth_key: "f0e552b6-a3c0-c570-6122-643c6effeebd:fx",
+  //     target_lang: "JA",
+  //     text: 'Hello',
+  //     // tag_handling: "xml",
+  //   }),
+  // };
+  // const res = await axiosClient.post("", {
+  //   key: process.env.NEXT_PUBLIC_GOOGLE_TRNSLATION_API_KEY,
+  //   q: "The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is the oldest and largest of the three pyramids in the Giza pyramid complex.",
+  //   source: "en",
+  //   target: "es",
+  //   format: "text",
+  // });
+
+  // const translatedData = res.data;
+  // console.log(translatedData.error);
 
   return {
     props: {
