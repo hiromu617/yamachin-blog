@@ -8,7 +8,7 @@ import { TagRes } from "../src/types/TagRes";
 import { Pagination } from "../src/components/Pagination/Pagination";
 import { BlogCard } from "../src/components/BlogCard/BlogCard";
 import { HeroSection } from "../src/components/HeroSection/HeroSection";
-import { useLocales } from "../src/hooks/useLocales";
+import { useLocale } from "../src/hooks/useLocale";
 import { NextSeo } from 'next-seo';
 
 type Props = {
@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({
   tags,
   tagTotalCount,
 }) => {
-  const { t, locale } = useLocales();
+  const { t, locale } = useLocale();
   if (!blogs) return <h1>error</h1>;
 
   return (
@@ -53,7 +53,7 @@ const Home: NextPage<Props> = ({
       <HeroSection />
       <div id="blogSection" className="text-left mb-2 md:my-5 md:ml-24">
         <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
-          {blogTotalCount} {t("blogHeading")}
+          {blogTotalCount} {t?.blogHeading}
         </h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">
@@ -71,7 +71,7 @@ const Home: NextPage<Props> = ({
       <div className="pb-20">
         <div className="text-left mb-2 md:my-5 md:ml-24">
           <h2 className="text-xl md:text-3xl text-yellow-500 dark:text-yellow-500 font-semibold">
-            {tagTotalCount} {t("tagHeading")}
+            {tagTotalCount} {t?.tagHeading}
           </h2>
         </div>
         <div className="mx-auto md:px-24 flex gap-3 flex-wrap py-2">

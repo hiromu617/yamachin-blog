@@ -16,6 +16,7 @@
     "@types/lodash": "^4.14.172",
     "@types/react-scroll": "^1.8.3",
     "autoprefixer": "^10.3.4",
+    "axios": "^0.24.0",
     "date-fns": "^2.23.0",
     "lodash": "^4.17.21",
     "microcms-js-sdk": "^1.2.0",

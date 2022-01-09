@@ -7,7 +7,7 @@ import { ja } from "date-fns/locale";
 
 type Props = {
   blog: Blog;
-  locale: Locales;
+  locale: string;
 };
 
 export const BlogCard: VFC<Props> = ({ blog, locale }) => {

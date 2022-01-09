@@ -4,7 +4,7 @@ import { BlogCard } from "../../src/components/BlogCard/BlogCard";
 import { Blog } from "../../src/types/Blog";
 import { Tag } from "../../src/types/Tag";
 import { BlogRes } from "../../src/types/BlogRes";
-import { useLocales } from "../../src/hooks/useLocales";
+import { useLocale } from "../../src/hooks/useLocale";
 import { GoBackBtn } from "../../src/components/GoBackBtn/GoBackBtn";
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
 const TagId: VFC<Props> = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { t, locale } = useLocales();
+  const { t, locale } = useLocale();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [tag, setTag] = useState<Tag>();
   const [totalCount, setTotalCount] = useState(0);
@@ -78,7 +78,7 @@ const TagId: VFC<Props> = () => {
           <span className="bg-yellow-500 dark:bg-yellow-600 text-white text-md px-3 py-1 rounded-full mr-3">
             {locale === "ja" ? tag.name : tag.enName}
           </span>
-          {totalCount} {t("blogHeading")}
+          {totalCount} {t?.blogHeading}
         </h2>
       </div>
       <ul className="flex flex-wrap gap-y-5 md:gap-x-5 w-full justify-center">

@@ -3,18 +3,25 @@ import Link from "next/link";
 import { MoonIcon, SunIcon, CheckIcon } from "@heroicons/react/solid";
 import { TranslateIcon } from "@heroicons/react/outline";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 import { Listbox, Transition } from "@headlessui/react";
-import { useLocales } from "../../hooks/useLocales";
+import { useLocale } from "../../hooks/useLocale";
 
 const locales = ["ja", "en"];
 
 export const NavBar: VFC = () => {
+  const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const { t, locale, setLocale } = useLocales();
+  const { t, locale: Locale } = useLocale();
+  console.log(router)
+  const onChange = (value: string) => {
+    router.push(router.asPath, "", { locale: value });
+  };
+
   return (
     <div className="sticky top-0 h-14 md:h-16 bg-white dark:bg-gray-900 z-50">
       <div className="flex justify-between px-3 h-full md:px-10 items-center border-b-2 border-gray-100 dark:border-gray-700">
-        <Link href="/">
+        <Link href="/" passHref>
           <h1 className="tracking-tighter text-xl font-medium text-gray-700 dark:text-gray-300">
             Yamachi
           </h1>
@@ -25,7 +32,7 @@ export const NavBar: VFC = () => {
               About
             </a>
           </Link>
-          <Listbox value={locale} onChange={setLocale}>
+          <Listbox value={Locale} onChange={onChange}>
             <div className="relative mt-1">
               <Listbox.Button className="relative w-full text-left cursor-default">
                 <button aria-label="LanguageToggle" type="button" className="">
@@ -59,7 +66,7 @@ export const NavBar: VFC = () => {
                               selected ? "font-medium" : "font-normal"
                             } block truncate dark:text-gray-300`}
                           >
-                            {t(locale)}
+                            {locale}
                           </span>
                           {selected ? (
                             <span

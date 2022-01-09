@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import { client } from "../libs/client";
 import { GoBackBtn } from "../src/components/GoBackBtn/GoBackBtn";
-import { useLocales } from "../src/hooks/useLocales";
+import { useLocale } from "../src/hooks/useLocale";
 import { NextSeo } from 'next-seo';
 
 type Props = {
@@ -24,7 +24,7 @@ type Profile = {
 };
 
 const About: NextPage<Props> = ({ profile }) => {
-  const { locale } = useLocales();
+  const { locale } = useLocale();
   return (
     <>
     <NextSeo
