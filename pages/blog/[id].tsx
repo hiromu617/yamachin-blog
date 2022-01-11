@@ -7,7 +7,6 @@ import { Blog } from "../../src/types/Blog";
 import { BlogRes } from "../../src/types/BlogRes";
 import { useLocale } from "../../src/hooks/useLocale";
 import { GoBackBtn } from "../../src/components/GoBackBtn/GoBackBtn";
-import { axiosClient } from "../../libs/axios";
 import { NextSeo } from "next-seo";
 
 type Props = {
@@ -15,7 +14,10 @@ type Props = {
 };
 
 const BlogId: NextPage<Props> = ({ blog }) => {
-  const { locale } = useLocale();
+  const { t, locale } = useLocale();
+
+  const blogContent = locale === "en" ? blog.enContent : blog.jaContent;
+  const altContent = blog.jaContent ? blog.jaContent : blog.enContent;
 
   return (
     <>
@@ -40,6 +42,13 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         }}
       />
       <main className="container md:px-10 pb-16 dark:bg-gray-900">
+        {(!blogContent || blogContent.length === 0) && (
+          <div className="flex items-center px-6 py-4 bg-yellow-600 border-2 border-yellow-400 text-white rounded mb-5 flex-col">
+            <div className="flex-auto">
+              <span className="text-xl">{t?.altLangDescription}</span>
+            </div>
+          </div>
+        )}
         <div className="text-center mb-5 md:mb-16">
           {blog.thumbnail && (
             <Image
@@ -66,12 +75,55 @@ const BlogId: NextPage<Props> = ({ blog }) => {
           </p>
         </div>
 
-        <article
-          dangerouslySetInnerHTML={{
-            __html: `${blog.body}`,
-          }}
-          className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
-        />
+        <article>
+          {blogContent &&
+            blogContent.length > 0 &&
+            blogContent?.map((content) => {
+              if (content.fieldId === "richEditor") {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${content.richEditor}`,
+                    }}
+                    className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
+                  />
+                );
+              }
+              if (content.fieldId === "html") {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${content.html}`,
+                    }}
+                    className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
+                  />
+                );
+              }
+            })}
+          {(!blogContent || blogContent.length === 0) &&
+            altContent?.map((content) => {
+              if (content.fieldId === "richEditor") {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${content.richEditor}`,
+                    }}
+                    className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
+                  />
+                );
+              }
+              if (content.fieldId === "html") {
+                return (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${content.html}`,
+                    }}
+                    className="prose-yellow prose text-gray-700 dark:prose-dark  mx-auto"
+                  />
+                );
+              }
+            })}
+        </article>
         <GoBackBtn />
       </main>
     </>
@@ -96,30 +148,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   const id = context.params.id;
   const data: Blog = await client.get({ endpoint: "blog", contentId: id });
-
-  // const params = {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   },
-  //   body: JSON.stringify({
-  //     auth_key: "f0e552b6-a3c0-c570-6122-643c6effeebd:fx",
-  //     target_lang: "JA",
-  //     text: 'Hello',
-  //     // tag_handling: "xml",
-  //   }),
-  // };
-  // const res = await axiosClient.post("", {
-  //   key: process.env.NEXT_PUBLIC_GOOGLE_TRNSLATION_API_KEY,
-  //   q: "The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is the oldest and largest of the three pyramids in the Giza pyramid complex.",
-  //   source: "en",
-  //   target: "es",
-  //   format: "text",
-  // });
-
-  // const translatedData = res.data;
-  // console.log(translatedData.error);
-
+  console.log(data);
   return {
     props: {
       blog: data,

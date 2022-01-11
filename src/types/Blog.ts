@@ -14,4 +14,12 @@ export type Blog = {
     width: number;
     height: number;
   };
+  readonly enContent?: (
+    | { fieldId: "richEditor"; richEditor: string }
+    | { fieldId: "html"; html: string }
+  )[];
+  readonly jaContent?: (
+    | { fieldId: "richEditor"; richEditor: string }
+    | { fieldId: "html"; html: string }
+  )[];
 };

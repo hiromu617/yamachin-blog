@@ -9,6 +9,7 @@ const data = {
   ja: "日本語",
   en: "英語",
   goBack: "戻る",
+  altLangDescription: "この記事は英語でのみ読むことができます。"
 };
 
 export default data;
