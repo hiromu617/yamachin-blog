@@ -13,7 +13,7 @@ export const NavBar: VFC = () => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
   const { t, locale: Locale } = useLocale();
-  console.log(router)
+
   const onChange = (value: string) => {
     router.push(router.asPath, "", { locale: value });
   };
@@ -26,7 +26,7 @@ export const NavBar: VFC = () => {
             Yamachi
           </h1>
         </Link>
-        <div className="flex items-center gap-5 mr-10">
+        <div className="flex items-center gap-5">
           <Link href="/about/">
             <a className="text-base font-medium text-gray-500 dark:text-gray-300 hover:text-yellow-500">
               About

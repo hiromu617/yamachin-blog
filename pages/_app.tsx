@@ -4,6 +4,7 @@ import { Footer } from "../src/components/Footer/Footer";
 import "tailwindcss/tailwind.css";
 import { ThemeProvider } from "next-themes";
 import { usePageView, GoogleAnalytics } from "../libs/gtag";
+import "../styles/global.css"
 import { DefaultSeo } from "next-seo";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

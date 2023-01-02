@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.embedly-embed {
+  max-width: 100%;
+}
