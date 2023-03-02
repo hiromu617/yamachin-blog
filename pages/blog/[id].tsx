@@ -78,10 +78,12 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         <article>
           {blogContent &&
             blogContent.length > 0 &&
-            blogContent?.map((content) => {
+            blogContent?.map((content, i) => {
               if (content.fieldId === "richEditor") {
                 return (
                   <div
+                    // 並び替えしないのでindexを使用
+                    key={i}
                     dangerouslySetInnerHTML={{
                       __html: `${content.richEditor}`,
                     }}
@@ -133,7 +135,7 @@ export default BlogId;
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async () => {
-  const data: BlogRes = await client.get({ endpoint: "blog" });
+  const data: BlogRes = await client.get({ endpoint: "blog?limit=100" });
 
   const paths = data.contents.map((content) => ({
     params: { id: content.id },
